@@ -6,14 +6,17 @@ function BotCard({ bot, onAdd, onRemove, onDischarge }) {
   
   const handleCardClick = () => {
     if (onAdd) {
-      onAdd(); // Used when clicking to add from BotCollection
+      onAdd(bot); // Used when clicking to add from BotCollection
+
     } else if (onRemove) {
-      onRemove(); // Used when clicking to remove from YourBotArmy
+      onRemove(bot); // Used when clicking to remove from YourBotArmy
     }
   };
 
   return (
-    <div className="bot-card" onClick={handleCardClick}>
+    <div className="bot-card"
+    onClick={handleCardClick}
+    style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
       <h3>{bot.name}</h3>
       <img src={bot.avatar_url} alt={bot.name} width="100" />
       <p>{bot.catchphrase}</p>
@@ -51,7 +54,7 @@ function BotCard({ bot, onAdd, onRemove, onDischarge }) {
              console.log("Discharge button clicked for:", bot)
             onDischarge(bot); // Call onDischarge with the bot object
           }}
-          style={{ color: "red", padding: "8px", marginTop: "8px" }}
+          style={{ color: "red", padding: "8px", marginTop: "8px", display:block}}
         >
           ❌ Discharge
         </button>

@@ -8,14 +8,19 @@ function YourBotArmy({ bots, onRemove, onDischarge }) {
   return (
     <div className="your-bot-army">
       <h3>My Bot Army</h3>
-      {bots.map((bot) => (
-        <BotCard
-          key={bot.id}
-          bot={bot}
-          onRemove={onRemove}
-          onDischarge={onDischarge}
-        />
-      ))}
+      
+      {bots.map((bot) => {
+  console.log("onDischarge in YourBotArmy:", onDischarge);
+  return (
+    <BotCard
+      key={bot.id}
+      bot={bot}
+      onRemove={onRemove}
+      onDischarge={onDischarge}
+    />
+  );
+})}
+
     </div>
   );
 }
