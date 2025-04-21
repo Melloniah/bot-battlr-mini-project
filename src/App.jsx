@@ -59,15 +59,15 @@ function App() {
       <div className="app-container">
         <h1>Bot Battlr</h1> {/* Heading at the top */}
         <div className="bot-section">
-         
+          
           <YourBotArmy
             bots={army}
             onRemove={RemoveBotFromArmy}
             onDischarge={DischargeBot}
           />
           <FilterBots filters={filters} onChange={setFilters} />
-      <BotCollection
-      bots={bots.filter(bot =>
+<BotCollection
+  bots={bots.filter(bot =>
     filters.length === 0 || filters.includes(bot.bot_class)
   )}
   onAdd={AddBotToArmy}
