@@ -1,38 +1,34 @@
 import React from "react";
 
 function BotCard({ bot, onAdd, onRemove, onDischarge }) {
-
-  console.log("BotCard props:", { bot, onAdd, onRemove, onDischarge });
-  
   const handleCardClick = () => {
     if (onAdd) {
       onAdd(bot); // Used when clicking to add from BotCollection
-
     } else if (onRemove) {
-      onRemove(bot); // Used when clicking to remove from YourBotArmy
+      onRemove(bot.id); // Used when clicking to remove from YourBotArmy
     }
   };
 
   return (
-    <div className="bot-card"
-    onClick={handleCardClick}
-    style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
+    <div
+      className="bot-card"
+      onClick={handleCardClick}
+      style={{
+        border: "1px solid #ccc",
+        padding: "10px",
+        margin: "10px",
+        cursor: "pointer",
+      }}
+    >
       <h3>{bot.name}</h3>
       <img src={bot.avatar_url} alt={bot.name} width="100" />
       <p>{bot.catchphrase}</p>
-      <p>
-        <strong>Class:</strong> {bot.bot_class}
-      </p>
-      <p>
-        <strong>Health:</strong> {bot.health}
-      </p>
-      <p>
-        <strong>Damage:</strong> {bot.damage}
-      </p>
-      <p>
-        <strong>Armor:</strong> {bot.armor}
-      </p>
+      <p><strong>Class:</strong> {bot.bot_class}</p>
+      <p><strong>Health:</strong> {bot.health}</p>
+      <p><strong>Damage:</strong> {bot.damage}</p>
+      <p><strong>Armor:</strong> {bot.armor}</p>
 
+      {/* Add to Army button (only visible in BotCollection) */}
       {onAdd && (
         <button
           onClick={(e) => {
@@ -46,15 +42,15 @@ function BotCard({ bot, onAdd, onRemove, onDischarge }) {
         </button>
       )}
 
+      {/* Discharge button (only visible in YourBotArmy) */}
       {onDischarge && (
         <button
           onClick={(e) => {
-            e.stopPropagation();
-             // Prevent triggering the onClick for remove
-             console.log("Discharge button clicked for:", bot)
-            onDischarge(bot); // Call onDischarge with the bot object
+            e.stopPropagation(); // Prevent card click when discharging
+            console.log("Discharge button clicked for:", bot);
+            onDischarge(bot);
           }}
-          style={{ color: "red", padding: "8px", marginTop: "8px", display:block}}
+          style={{ backgroundColor: "red", color: "white", padding: "8px", marginTop: "8px" }}
         >
           ❌ Discharge
         </button>

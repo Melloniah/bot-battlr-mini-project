@@ -1,12 +1,51 @@
-# React + Vite
+Week 2 Code Challenge Bot Battlr
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🤖 Bot Battlr
+This is a React-based app where a user can browse bot profile, filter by their class and build their own bot army by simply clicking on any bot they want.  
 
-Currently, two official plugins are available:
+## 🚀 Features
+As a user, you can ;
+View All Bots
+All available bots are fetched from a backend JSON server and displayed in the BotCollection component.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Build Your Army
+Click on a bot to add it to your personal army (YourBotArmy). Each bot can only be enlisted once.
 
-## Expanding the ESLint configuration
+Release a Bot
+Click on a bot in your army to remove it from YourBotArmy. The bot is not deleted — just released.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Discharge a Bot
+Click the red ❌ button on an army bot to permanently remove them from the army and delete them from the backend.
+
+Filter Bots by Class
+Use the FilterBar to filter bots by their class (e.g. Medic, Assault, Witch). You can select multiple classes at once.
+
+
+## Project Structure
+
+
+src/
+├── App.jsx
+├── App.css
+├── main.jsx
+├── index.css
+├── assets/
+│   └── react.svg
+├── Components/
+│   ├── BotCard.jsx
+│   ├── BotCollection.jsx
+│   └── YourBotArmy.jsx
+    ├── FilterBar.jsx 
+## To Begin
+Make sure you have Node.js and npm
+npm install
+Start your backend server by; json-server --watch db.json --port 8001
+start the vite React app by :npm run dev
+## Backend API
+It allows us to GET for fetching bot collection
+Delete a bot by DELETE when a user discharges an army
+
+## Responsiveness
+Two Column Layout — BotCollection on the left, YourBotArmy on the right
+
+Responsive Cards — Each bot is clickable and responsive
