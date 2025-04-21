@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import './App.css'
-import BotCollection from './Components/BotCollection'
+import BotCollection from './Components/BotCollection.jsx'
 import YourBotArmy from './Components/YourBotArmy'
 
 
@@ -22,6 +22,16 @@ function App() {
   })
   }, [])
 
+  function AddBotToArmy(bot) {
+    if (!army.some((b) => b.id === bot.id)) {
+      setArmy([...army, bot]);
+    }
+  }
+  
+  function RemoveBotFromArmy(bot) {
+    setArmy(army.filter((b) => b.id !== bot.id));
+  }
+  
   function DischargeBot(bot) {
     fetch(`http://localhost:8001/bots/${bot.id}`, {
       method: "DELETE"
@@ -41,23 +51,6 @@ function App() {
  
 
 
-  function AddBotToArmy(bot){
-const BotAlreadyInArmy=army.some (function(botInArmy){ //finds the first bot that meets the condition(id)
-  return botInArmy.id===bot.id
-});
-
-if(!BotAlreadyInArmy){
-  setArmy([...army, bot])
-}
-  }
-
-  function RemoveBotFromArmy(bot){
-const updatedBotArmy=army.filter(function(botFromArmy){
-  return botFromArmy.id !== bot.id;
-})
-
-setArmy(updatedBotArmy)
-  }
 
   return (
     <div className='app'> 
